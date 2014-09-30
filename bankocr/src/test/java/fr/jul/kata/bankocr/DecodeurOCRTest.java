@@ -31,4 +31,30 @@ public class DecodeurOCRTest {
     private String fabriquerUneEntreeDeUn() {
         return "                           " + "  |  |  |  |  |  |  |  |  |" + "  |  |  |  |  |  |  |  |  |" + "                           ";
     }
+    
+    @Test
+    public void peutReconnaitre222222222() {
+        DecodeurOCR decodeurOCR = new DecodeurOCR();
+        
+        String entreeDecodee = decodeurOCR.decoder(this.fabriquerUneEntreeDeDeux());
+        
+        assertThat(entreeDecodee).isEqualTo("222222222");
+    }
+    
+    private String fabriquerUneEntreeDeDeux() {
+        return " _  _  _  _  _  _  _  _  _ " + " _| _| _| _| _| _| _| _| _|" + "|_ |_ |_ |_ |_ |_ |_ |_ |_ " + "                           ";
+    }
+    
+    @Test
+    public void peutReconnaitre123456789() {
+        DecodeurOCR decodeurOCR = new DecodeurOCR();
+        
+        String entreeDecodee = decodeurOCR.decoder(this.fabriquerUneEntree123456789());
+        
+        assertThat(entreeDecodee).isEqualTo("123456789");
+    }
+    
+    private String fabriquerUneEntree123456789() {
+        return "    _  _     _  _  _  _  _ " + "  | _| _||_||_ |_   ||_||_|" + "  ||_  _|  | _||_|  ||_| _|";
+    }
 }
